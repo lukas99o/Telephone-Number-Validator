@@ -11,6 +11,16 @@ checkBtn.addEventListener("click", () => {
     }
 })
 
+userInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+        if (userInput.value === "") {
+            alert("Please provide a phone number");
+        } else {
+            numberValidator();
+        }
+    }
+})
+
 const numberValidator = () => {
     const numberRegex = /^1?\s*(?:[.-]\s*)?(\(\d{3}\)|\d{3})\s*(?:[.-]\s*)?\d{3}\s*(?:[.-]\s*)?\d{4}$/;
     const result = document.createElement("p");
@@ -25,6 +35,8 @@ const numberValidator = () => {
     }
     resultDiv.appendChild(result);
     resultDiv.classList.remove('hidden');
+
+    userInput.value = "";
 }
 
 clearBtn.addEventListener("click", () => {
